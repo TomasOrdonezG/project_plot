@@ -1,6 +1,5 @@
 from pygame_draw_library import *
 from initialize_pygame import canvas, cnvH, cnvW
-from pprint import pprint as pp
 from project_data import Project, IV
 from read_data import read_data
 import pygame
