@@ -18,3 +18,7 @@ Scroll mode is on by default
 - P - Toggle arrow proportionality. On by default (Off makes the arrows clearer but not proportional)
 - S - Saves the screen as a photo in the folder named 'plot.PNG'. It will replace the file if it already exists
 - C - Focuses on the data
+
+### Requirements
+- Latest version of Python
+- Pygame module. Run `pip install pygame` in your terminal to install
