@@ -59,9 +59,9 @@ def main():
           else:
             # Scroll
             if event.button == 4:  # Scroll up
-              graph.scroll('left')
-            elif event.button == 5:  # Scroll down
               graph.scroll('right')
+            elif event.button == 5:  # Scroll down
+              graph.scroll('left')
             
           
         else:
@@ -76,9 +76,9 @@ def main():
           else:
             # Scroll
             if event.button == 4:  # Scroll up
-              graph.scroll('down')
-            elif event.button == 5:  # Scroll down
               graph.scroll('up')
+            elif event.button == 5:  # Scroll down
+              graph.scroll('down')
 
     #Update display
     pygame.display.flip()

@@ -2,9 +2,11 @@ from initialize_pygame import cnvH, cnvW
 import pygame
 from pygame_draw_library import *
 from project_data import Project, IV
-import math
+import math, os
 
 class Graph:
+  SCREENSHOT_DIR = 'screenshots'
+  
   # ! INITIALIZATION
   def __init__(self, projects: list[Project], canvas) -> None:
     self.projects = projects
@@ -67,7 +69,17 @@ class Graph:
 
   def screenshot(self):
     '''Screenshots the graph'''
-    pygame.image.save(self.canvas, "plot.png")
+    if not os.path.exists(Graph.SCREENSHOT_DIR):
+      os.makedirs(Graph.SCREENSHOT_DIR)
+      i = 1
+    else:
+      if len(os.listdir(Graph.SCREENSHOT_DIR)) == 0:
+        i = 1
+      else:
+        last_file = os.listdir(Graph.SCREENSHOT_DIR)[-1]
+        Vi = last_file.index('V')
+        i = int(last_file[Vi+1:-4]) + 1
+    pygame.image.save(self.canvas, os.path.join(Graph.SCREENSHOT_DIR, f"plot_V{i}.png"))
 
   def change_scale(self, direction: str, zoom_in: bool):
     if zoom_in:
