@@ -187,6 +187,10 @@ class Graph:
     largest_IV_r = 0
     projects = sorted(self.projects, key=lambda a_project: abs(max([abs(anIV.beta) for anIV in a_project.IVs])), reverse=True)
     for project in projects:
+      if project.name == 'p1':
+        colour = (255, 8, 232)
+      else:
+        colour = BLACK
       
       # Extra lines
       if self.lines and project.IVs[0].in_grid:
@@ -205,8 +209,8 @@ class Graph:
             x2 = self.pos_screen(sorted_IVs_just[i+1].just, 1)[0]
 
             # Draw lines
-            draw_line(x1, y1up, x2, y2up, BLACK, 2)
-            draw_line(x1, y1down, x2, y2down, BLACK, 2)
+            draw_line(x1, y1up, x2, y2up, colour, 2)
+            draw_line(x1, y1down, x2, y2down, colour, 2)
 
       # Draw IVs, sort first
       IVs = sorted(project.IVs, key=lambda anIV: abs(anIV.beta), reverse=True)
@@ -218,7 +222,7 @@ class Graph:
 
           
         if pIV.in_grid:
-          draw_bordered_circle(x, y, beta, pIV.colour, BLACK, 2)
+          draw_bordered_circle(x, y, beta, pIV.colour, colour, 2)
 
       threshhold = largest_IV_r * 0.3
       for pIV in project.IVs:
