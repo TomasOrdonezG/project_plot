@@ -234,7 +234,6 @@ class Graph:
             x, y = self.pos_screen(pIV.just, project.just)
           else:
             x, y = self.pos_screen(pIV.just, project.just)
-            y += size
             if not self.proportional:
               size = threshhold * (size / abs(size))
                 
