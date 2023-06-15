@@ -12,10 +12,10 @@ class Graph:
     self.projects = projects
     self.canvas = canvas
     
-    self.top = self.get_top()
-    self.bottom = self.get_bottom()
-    self.right = self.get_right()
-    self.left = self.get_left()
+    self.top = 100
+    self.bottom = -100
+    self.right = 100
+    self.left = -100
 
     w_percentage = 0.8
     h_percentage = 0.8
@@ -31,6 +31,8 @@ class Graph:
     self.arrows = True
     self.proportional = True
     self.grid_lines = False
+    
+    self.center_graph()
 
   def update_attributes(self):
     '''Updates all the position and dimension attributes'''
@@ -128,19 +130,6 @@ class Graph:
     self.right = max([anIV.just for project in self.projects for anIV in project.IVs]) + 10
     self.left = min([anIV.just for project in self.projects for anIV in project.IVs]) - 10
     self.update_attributes()
-
-  # ! GET METHODS
-  def get_top(self) -> float:
-    return 100
-  
-  def get_bottom(self) -> float:
-    return -100
-
-  def get_right(self):  # todo finish
-    return 100
-
-  def get_left(self):  # todo finish
-    return -100
   
   # ! CONVERSION
   def pos_screen(self, plane_x: float, plane_y: float) -> tuple[float]:
@@ -246,7 +235,7 @@ class Graph:
               size = threshhold * (size / abs(size))
                 
           if pIV.in_grid:
-            draw_arrow((x, y), (x, y+size), DARK_GRAY, 1)
+            draw_arrow((x, y), (x, y-size), DARK_GRAY, 1)
        
         # Update Visibility
         if project.just < self.top and project.just > self.bottom and pIV.just < self.right and pIV.just > self.left:
